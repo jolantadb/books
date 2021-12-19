@@ -6,6 +6,9 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class Bookstore {
+    // saraksts ar grāmatam
+
+
     public void addBook (Book book){
 //        pievieno grāmatu
     }
