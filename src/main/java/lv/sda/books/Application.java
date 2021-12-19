@@ -16,17 +16,19 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 public class Application {
-    static Scanner scanner=new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
+        Bookstore bookstore = new Bookstore();
+
         boolean quit = false;
 
-        while (!quit){
+        while (!quit) {
             System.out.println("\nEnter your choice: (0 to show available choices)");
             int choice = scanner.nextInt();
             scanner.nextLine();
-            switch (choice){
+            switch (choice) {
                 case 0:
                     printChoices();
                     break;
@@ -46,7 +48,7 @@ public class Application {
                         out.write("\n");
                         out.write(scanner.nextLine());
                         out.close();
-                    } catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
 
