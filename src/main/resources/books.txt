@@ -1,1 +1,10 @@
-1;The Hobbit;J.R.R. Tolken;George Allen & Unwin;Fantasy;304;1937
+9780547928227;The Hobbit;J.R.R. Tolken;George Allen & Unwin;Fantasy;304;1937
+8580001044842;The Little Prince;Antoine de Saint-Exupéry;Reynal & Hitchcock;Novelle;96;1943
+9780747532743;Harry Potter and the Philosopher's Stone;J. K. Rowling;Bloomsbury;Fantasy;223;1997
+9780385504201;The Da Vinci Code;Dan Brown;Doubleday;Mystery;597;2003
+9780008144227;The Alchemist;Paulo Coelho;HarperTorch;Fantasy;208;1988
+9789352903450;Cosmos;Carl Sagan;Random House;Science;432;1980
+9781400079988;War and Peace;Leo Tolstoy;The Russian Messenger;Historical novel;1225;1869
+9780747542155;Harry Potter and the Prisoner of Azkaban;J. K. Rowling;Bloomsbury;Fantasy;317;1999
+9780446516525;The Bridges of Madison County;Robert James Waller;Warner Books;Romance;192;1992
+9780590302715;Charlotte's Web;E. B. White;Harper & Brothers;Children's fiction;192;1943
