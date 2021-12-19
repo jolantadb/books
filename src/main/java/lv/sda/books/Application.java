@@ -1,5 +1,9 @@
 package lv.sda.books;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +19,7 @@ public class Application {
     static Scanner scanner=new Scanner(System.in);
 
     public static void main(String[] args) {
-        Bookstore bookstore = new Bookstore();
+
         boolean quit = false;
 
         while (!quit){
@@ -28,12 +32,24 @@ public class Application {
                     break;
                 case 1:
                     System.out.println("Printing all books");
+                    System.out.println();
                     break;
                 case 2:
                     System.out.println("Book info");
                     break;
                 case 3:
                     System.out.println("Adding book");
+                    try {
+                        FileWriter myW = new FileWriter("src/main/resources/books.txt", true);
+                        BufferedWriter out = new BufferedWriter(myW);
+                        System.out.println("write: isbn;title;author;publisher;description;pages;publishing year");
+                        out.write("\n");
+                        out.write(scanner.nextLine());
+                        out.close();
+                    } catch (IOException e){
+                        e.printStackTrace();
+                    }
+
                     break;
                 case 4:
                     System.out.println("Removing book");
