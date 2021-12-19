@@ -41,17 +41,11 @@ public class Application {
                     break;
                 case 3:
                     System.out.println("Adding book");
-                    try {
-                        FileWriter myW = new FileWriter("src/main/resources/books.txt", true);
-                        BufferedWriter out = new BufferedWriter(myW);
-                        System.out.println("write: isbn;title;author;publisher;description;pages;publishing year");
-                        out.write("\n");
-                        out.write(scanner.nextLine());
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("Enter isbn");
+                    String isbn = scanner.nextLine();
 
+                    Book book = new Book(isbn, "","","", "", 240, LocalDate.of(year,1,1));
+                    bookstore.addBook(book);
                     break;
                 case 4:
                     System.out.println("Removing book");

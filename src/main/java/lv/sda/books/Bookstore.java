@@ -1,5 +1,8 @@
 package lv.sda.books;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Bookstore {
     // saraksts ar grāmatam
-    List<Book >books = new ArrayList<>();
+    List<Book> books = new ArrayList<>();
 
     public Bookstore() {
         try {
@@ -41,6 +44,8 @@ public class Bookstore {
     }
 
     public void addBook (Book book){
+        // for loop ar if statementu pārbaudām ka esošaās grāmatas nestaur grāmatu ar to paš isbn
+        books.add(book);
 //        pievieno grāmatu
     }
 
@@ -58,8 +63,23 @@ public class Bookstore {
         return emptyList();
     }
 
-    public List<Book> allBooks(){
+    public List<Book> printAllBooks(){
 //        visas grāmatas
         return emptyList();
+    }
+
+    public void saveToFile()
+    {
+        try {
+            FileWriter myW = new FileWriter("src/main/resources/books.txt", true);
+            BufferedWriter out = new BufferedWriter(myW);
+            System.out.println("write: isbn;title;author;publisher;description;pages;publishing year");
+            out.write("\n");
+           // out.write(scanner.nextLine());
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // pēc darba beigšanas tiek izsaukta šī metode, lai pārrakstītu books.txt failu
     }
 }
