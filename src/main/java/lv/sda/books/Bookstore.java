@@ -43,16 +43,21 @@ public class Bookstore {
     }
 
     //Adding book
-    public boolean addNewBook(Book book) {
-        for (int i = 0; i < this.books.size(); i++) {
-            if (books.get(i).getIsbn().equals(book.getIsbn())) {
-                System.out.println("This book is already in store!");
-            } else {
-                books.add(book);
-                System.out.println("This book is ADDED to the store!");
+    public void addNewBook(Book book) {
+        boolean foundBook = false;
+        for (Book value : this.books) {
+            if (foundBook) break;
+            if (value.getIsbn().equals(book.getIsbn())) {
+                foundBook = true;
+                
             }
         }
-        return false;
+        if (foundBook) {
+            System.out.println("This book is already in store!");
+        } else {
+            books.add(book);
+            System.out.println("This book is ADDED to the store!");
+        }
     }
 
 //    Removing book
