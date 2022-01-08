@@ -8,3 +8,5 @@
 9780747542155;Harry Potter and the Prisoner of Azkaban;J. K. Rowling;Bloomsbury;Fantasy;317;1999
 9780446516525;The Bridges of Madison County;Robert James Waller;Warner Books;Romance;192;1992
 9780590302715;Charlotte's Web;E. B. White;Harper & Brothers;Children's fiction;192;1943
+67868798;Gramata;Autors;Publisher;Romance;290;2005
+

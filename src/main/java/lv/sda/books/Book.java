@@ -1,7 +1,5 @@
 package lv.sda.books;
 
-import java.time.LocalDate;
-
 public class Book {
     private String isbn;
     private String title;
@@ -9,9 +7,9 @@ public class Book {
     private String publisher;
     private String description;
     private int pages;
-    private LocalDate publishingYear;
+    private int publishingYear;
 
-    public Book(String isbn, String title, String author, String publisher, String description, int pages, LocalDate publishingYear) {
+    public Book(String isbn, String title, String author, String publisher, String description, int pages, int publishingYear) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -20,6 +18,11 @@ public class Book {
         this.pages = pages;
         this.publishingYear = publishingYear;
     }
+
+    public Book() {
+
+    }
+
 
     public String getIsbn() {
         return isbn;
@@ -75,12 +78,14 @@ public class Book {
         return this;
     }
 
-    public LocalDate getPublishingYear() {
+    public int getPublishingYear() {
         return publishingYear;
     }
 
-    public Book setPublishingYear(LocalDate publishingYear) {
+    public Book setPublishingYear(int publishingYear) {
         this.publishingYear = publishingYear;
         return this;
     }
+
+
 }

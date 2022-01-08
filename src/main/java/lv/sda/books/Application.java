@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -17,10 +18,9 @@ import static java.util.stream.Collectors.toList;
 
 public class Application {
     static Scanner scanner = new Scanner(System.in);
+    private static Bookstore bookstore = new Bookstore();
 
     public static void main(String[] args) {
-
-        Bookstore bookstore = new Bookstore();
 
         boolean quit = false;
 
@@ -32,37 +32,41 @@ public class Application {
                 case 0:
                     printChoices();
                     break;
-                case 1:
-                    System.out.println("Printing all books");
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println("Book info");
-                    break;
-                case 3:
-                    System.out.println("Adding book");
-                    System.out.println("Enter isbn");
-                    String isbn = scanner.nextLine();
 
-                    Book book = new Book(isbn, "","","", "", 240, LocalDate.of(year,1,1));
-                    bookstore.addBook(book);
+                case 1:
+                    bookstore.printAllBooks();
                     break;
+
+                case 2:
+                    getBookInfo();
+                    break;
+
+                case 3:
+                    System.out.println("Adding book :");
+                    addNewBook();
+                    break;
+
                 case 4:
-                    System.out.println("Removing book");
+                    removeBookByIsbn();
                     break;
+
                 case 5:
-                    System.out.println("Searching book");
+                    searchByAuthor();
                     break;
+
                 case 6:
-                    System.out.println("Author information");
+                    System.out.println("Author information: ");
                     break;
+
                 case 7:
                     System.out.println("\n You quited the store!");
                     quit = true;
+//                    bookstore.saveToFile();
                     break;
             }
         }
     }
+
 
     private static void printChoices() {
         System.out.println("\nAvailable choices:\npress");
@@ -77,4 +81,66 @@ public class Application {
         System.out.println("Choose your action: ");
     }
 
+    private static void addNewBook() {
+
+        Book newBook = new Book();
+
+        System.out.println("Enter isbn");
+        String isbn = scanner.nextLine();
+        newBook.setIsbn(isbn);
+
+        System.out.println("Enter title");
+        String title = scanner.nextLine();
+        newBook.setTitle(title);
+
+        System.out.println("Enter author");
+        String author = scanner.nextLine();
+        newBook.setAuthor(author);
+
+        System.out.println("Enter publisher");
+        String publisher = scanner.nextLine();
+        newBook.setPublisher(publisher);
+
+        System.out.println("Enter description");
+        String description = scanner.nextLine();
+        newBook.setDescription(description);
+
+        System.out.println("Enter number of pages");
+        int pages = scanner.nextInt();
+        newBook.setPages(pages);
+
+        System.out.println("Enter the release year");
+        int publishingYear = scanner.nextInt(3);
+        newBook.setPublishingYear(publishingYear);
+
+        bookstore.addNewBook(newBook);
+
+//            if (bookstore.addNewBook(newBook)) {
+//                System.out.println("New book added: " + title + " - " + author);
+//
+//            } else {
+//                System.out.println("This book is already in store! ");
+//            }
+
+    }
+
+    private static void searchByAuthor() {
+        System.out.println("Enter the name of the author: ");
+        String author = scanner.nextLine();
+        bookstore.searchBookByAuthor(author);
+    }
+
+    private static void removeBookByIsbn() {
+        System.out.println("Enter the book ISBN you want to remove: ");
+        String isbn = scanner.nextLine();
+        bookstore.removeBook(isbn);
+    }
+
+    private static void getBookInfo() {
+        System.out.println("Enter the book ISBN: ");
+        String isbn = scanner.nextLine();
+        bookstore.getInfo(isbn);
+    }
+
 }
+
