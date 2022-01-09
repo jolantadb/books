@@ -49,7 +49,6 @@ public class Bookstore {
             if (foundBook) break;
             if (value.getIsbn().equals(book.getIsbn())) {
                 foundBook = true;
-                
             }
         }
         if (foundBook) {
@@ -60,47 +59,54 @@ public class Bookstore {
         }
     }
 
-//    Removing book
+    //    Removing book
     public void removeBook(String isbn) {
+        var done = 0;
         for (int i = 0; i < this.books.size(); i++) {
             if (books.get(i).getIsbn().equals(isbn)) {
                 books.remove(i);
-                System.out.println("Book is REMOVED from the store!");
-            } else {
-                System.out.println("Book with this ISBN is not found!");
+                done++;
             }
+        }
+        if (done == 0) {
+            System.out.println("Book with this ISBN - " + isbn + " - is NOT found!");
+        } else if (done != 0) {
+            System.out.println("Book is REMOVED from the store!");
         }
     }
 
-//Get book info
+    //Get book info
     public Book getInfo(String isbn) {
+        var done = 0;
         for (Book book : this.books) {
             if (book.getIsbn().equals(isbn)) {
                 System.out.println(
-                        " Title -> " + book.getTitle() + " - " +
-                                " \nAuthor -> " + book.getAuthor() + " - " +
-                                " \nDescription -> " + book.getDescription() + " - " +
-                                " \nPublishing year -> " + book.getPublishingYear() + " - " +
-                                " \nPublisher -> " + book.getPublisher() + " - " +
-                                " \nNumber of pages -> " + book.getPages());
-            }else {
-                System.out.println("Book with this ISBN is not found!");
+                        "Title ---> " + book.getTitle() +
+                                " \nAuthor ---> " + book.getAuthor() +
+                                " \nDescription ---> " + book.getDescription() +
+                                " \nPublishing year ---> " + book.getPublishingYear() +
+                                " \nPublisher ---> " + book.getPublisher() +
+                                " \nNumber of pages ---> " + book.getPages());
+                done++;
             }
+        }
+        if (done == 0) {
+            System.out.println("Book with this ISBN - " + isbn + " - is NOT found!");
         }
         return null;
     }
 
-    public List<Book> searchBookByAuthor(String author) {
-        for (int i = 0; i < this.books.size(); i++) {
-            if (this.books.get(i).getAuthor().equals(author)) {
-                return books;
-            }else {
+    public void searchBookByAuthor(String author) {
+        var done = 0;
+        for (Book book : this.books) {
+            if (book.getAuthor().equals(author)) {
+                System.out.println();
+            } else {
                 System.out.println("Book NOT found!");
             }
         }
-        return books;
-    }
 
+    }
 
     public void printAllBooks() {
         System.out.println("Printing all books: ");
@@ -113,19 +119,16 @@ public class Bookstore {
         }
     }
 
-//    public void saveToFile() {
-//        try {
-//            FileWriter myW = new FileWriter("src/main/resources/books.txt", true);
-//            BufferedWriter out = new BufferedWriter(myW);
-//            System.out.println("write: isbn;title;author;publisher;description;pages;publishing year");
-//            out.write("\n");
-////             out.write(scanner.nextLine());
-//            out.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//         pēc darba beigšanas tiek izsaukta šī metode, lai pārrakstītu books.txt failu
-//    }
+    public void saveToFile() {
+        try {
+            Path file = Paths.get("src/main/resources/books.txt");
+            List<String> lines = books.stream().map(Book::toString).collect(toList());
+            Files.write(file, lines);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
